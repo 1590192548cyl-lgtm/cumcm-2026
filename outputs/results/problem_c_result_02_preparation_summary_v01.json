@@ -1,0 +1,24 @@
+{
+  "status": "pass",
+  "created_at": "2026-09-10T20:54:49",
+  "random_seed": 20260910,
+  "time_step_minutes": 10,
+  "outputs": {
+    "q1": {
+      "path": "data/processed/problem_c_processed_q1_day_v01.csv",
+      "rows": 144
+    },
+    "actual": {
+      "path": "data/processed/problem_c_processed_actual_panel_v01.csv",
+      "rows": 52560,
+      "date_min": "2025-01-01",
+      "date_max": "2025-12-31"
+    },
+    "forecast": {
+      "path": "data/processed/problem_c_processed_forecast_long_v01.csv",
+      "rows": 35040,
+      "issue_min": "2025-01-01T00:00:00",
+      "issue_max": "2025-12-31T18:00:00"
+    }
+  }
+}

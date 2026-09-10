@@ -46,3 +46,15 @@ git push -u origin feat/你的任务
 
 紧急比赛节奏下仍建议通过 Pull Request 合并；至少由另一位队员快速检查后再合并到 `main`。
 
+## C 题工作流
+
+C 题原始附件与官方结果模板保存在 `data/raw/`，题面保存在
+`references/problem_c_statement_v01.pdf`。从项目根目录运行：
+
+~~~bash
+python3 src/problem_c_pipeline_cc_v01.py --stage all
+~~~
+
+该命令先校验四份附件和五份模板，再生成问题 1 单日数据、全年实际数据长表和
+光伏预报长表。模型路线、时间口径与三人分工见
+`docs/20260910_2045_problem_c_workflow_cc.md`。

@@ -1,0 +1,173 @@
+{
+  "status": "pass",
+  "checked_at": "2026-09-10T20:53:12",
+  "checks": [
+    "attachment_1: file exists",
+    "attachment_2: file exists",
+    "attachment_3: file exists",
+    "attachment_4: file exists",
+    "result1: file exists",
+    "result2: file exists",
+    "result3: file exists",
+    "result4_2: file exists",
+    "result4_3: file exists",
+    "attachment_1: 144 ten-minute rows",
+    "attachment_1: expected headers",
+    "attachment_1: valid time cells",
+    "attachment_1: no duplicate intervals",
+    "attachment_2: expected sheets",
+    "attachment_2/小区负载: 365 days by 144 intervals",
+    "attachment_2/小区负载: full 2025 coverage",
+    "attachment_2/光伏发电实际功率: 365 days by 144 intervals",
+    "attachment_2/光伏发电实际功率: full 2025 coverage",
+    "attachment_3: 365 x 4 forecast issues",
+    "attachment_3: issue times repeat at 0/6/12/18",
+    "attachment_4: 365 days by 144 intervals",
+    "result1: expected template sheets",
+    "result2: expected template sheets",
+    "result3: expected template sheets",
+    "result4_2: expected template sheets",
+    "result4_3: expected template sheets"
+  ],
+  "workbooks": {
+    "attachment_1": {
+      "path": "data/raw/problem_c_raw_attachment_1_v01.xlsx",
+      "size_bytes": 16003,
+      "sheets": {
+        "Sheet1": [
+          145,
+          4
+        ]
+      }
+    },
+    "attachment_2": {
+      "path": "data/raw/problem_c_raw_attachment_2_v01.xlsx",
+      "size_bytes": 907128,
+      "sheets": {
+        "小区负载": [
+          366,
+          145
+        ],
+        "光伏发电实际功率": [
+          366,
+          145
+        ]
+      }
+    },
+    "attachment_3": {
+      "path": "data/raw/problem_c_raw_attachment_3_v01.xlsx",
+      "size_bytes": 293526,
+      "sheets": {
+        "Sheet1": [
+          1461,
+          26
+        ]
+      }
+    },
+    "attachment_4": {
+      "path": "data/raw/problem_c_raw_attachment_4_v01.xlsx",
+      "size_bytes": 409790,
+      "sheets": {
+        "Sheet1": [
+          366,
+          145
+        ]
+      }
+    },
+    "result1": {
+      "path": "data/raw/problem_c_raw_result_1_template_v01.xlsx",
+      "size_bytes": 13323,
+      "sheets": {
+        "计划购电量": [
+          145,
+          2
+        ],
+        "充放电量": [
+          7,
+          5
+        ]
+      }
+    },
+    "result2": {
+      "path": "data/raw/problem_c_raw_result_2_template_v01.xlsx",
+      "size_bytes": 18397,
+      "sheets": {
+        "计划购电量": [
+          335,
+          147
+        ],
+        "充放电量": [
+          20,
+          6
+        ],
+        "紧急购电量": [
+          11,
+          3
+        ]
+      }
+    },
+    "result3": {
+      "path": "data/raw/problem_c_raw_result_3_template_v01.xlsx",
+      "size_bytes": 265429,
+      "sheets": {
+        "计划购电量": [
+          335,
+          147
+        ],
+        "调整购电量": [
+          335,
+          147
+        ],
+        "充放电量": [
+          26,
+          6
+        ],
+        "紧急购电量": [
+          11,
+          3
+        ]
+      }
+    },
+    "result4_2": {
+      "path": "data/raw/problem_c_raw_result_4_2_template_v01.xlsx",
+      "size_bytes": 18397,
+      "sheets": {
+        "计划购电量": [
+          335,
+          147
+        ],
+        "充放电量": [
+          20,
+          6
+        ],
+        "紧急购电量": [
+          11,
+          3
+        ]
+      }
+    },
+    "result4_3": {
+      "path": "data/raw/problem_c_raw_result_4_3_template_v01.xlsx",
+      "size_bytes": 265429,
+      "sheets": {
+        "计划购电量": [
+          335,
+          147
+        ],
+        "调整购电量": [
+          335,
+          147
+        ],
+        "充放电量": [
+          26,
+          6
+        ],
+        "紧急购电量": [
+          11,
+          3
+        ]
+      }
+    }
+  },
+  "check_count": 26
+}
