@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>药材热风烘干过程的径向传热传质建模与收缩效应分析</title>
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+      chtml: {scale: 0.96},
+      startup: {typeset: true}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @page { size: A4; margin: 20mm 18mm 20mm 18mm; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: #161616; background: white;
+      font-family: "Songti SC", "STSong", "SimSun", serif;
+      font-size: 10.5pt; line-height: 1.68; text-align: justify;
+    }
+    .title-page {
+      height: 250mm; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      break-after: page;
+    }
+    .badge { font-family: "Heiti SC", sans-serif; font-size: 12pt; letter-spacing: 0.18em; color: #555; }
+    h1 { font-family: "Heiti SC", sans-serif; font-size: 25pt; line-height: 1.35; margin: 24mm 8mm 8mm; }
+    .subtitle { font-size: 13pt; color: #555; }
+    .meta { margin-top: 34mm; width: 75%; font-size: 11pt; line-height: 2.1; }
+    h2 {
+      font-family: "Heiti SC", sans-serif; font-size: 16pt; margin: 7mm 0 3mm;
+      padding-bottom: 1.5mm; border-bottom: 1px solid #777; break-after: avoid;
+    }
+    h3 { font-family: "Heiti SC", sans-serif; font-size: 12.5pt; margin: 5mm 0 2mm; break-after: avoid; }
+    p { margin: 0 0 2.2mm; }
+    .abstract { border: 1px solid #aaa; padding: 4mm 5mm; margin: 3mm 0 5mm; background: #fafafa; font-size: 10pt; line-height: 1.55; }
+    .keywords { margin-top: 3mm; }
+    .en { font-family: Georgia, "Times New Roman", serif; text-align: left; font-size: 9.1pt; line-height: 1.45; }
+    .equation { margin: 3mm 0; text-align: center; break-inside: avoid; }
+    table { width: 100%; border-collapse: collapse; margin: 3mm 0 5mm; font-size: 9.2pt; break-inside: avoid; }
+    caption { caption-side: top; font-weight: 600; margin-bottom: 2mm; }
+    th, td { border: 1px solid #777; padding: 1.5mm 1.8mm; text-align: center; }
+    th { background: #eeeeee; font-family: "Heiti SC", sans-serif; }
+    .booktabs th, .booktabs td { border-left: 0; border-right: 0; }
+    .booktabs tr:first-child th { border-top: 1.5px solid #222; }
+    .booktabs tr:last-child td { border-bottom: 1.5px solid #222; }
+    figure { margin: 5mm auto; text-align: center; break-inside: avoid; }
+    figure img { max-width: 96%; max-height: 148mm; object-fit: contain; }
+    figcaption { font-size: 9.5pt; margin-top: 2mm; }
+    ul, ol { margin: 1mm 0 3mm 6mm; padding-left: 5mm; }
+    li { margin-bottom: 1.2mm; }
+    .note { border-left: 3px solid #777; padding: 2mm 4mm; background: #f5f5f5; margin: 3mm 0; }
+    .small { font-size: 9pt; color: #444; }
+    .page-break { break-before: page; }
+    code { font-family: Menlo, Consolas, monospace; font-size: 8.8pt; }
+    mjx-container[jax="CHTML"][display="true"] { margin: 0.6em 0 !important; }
+  </style>
+</head>
+<body>
+  <section class="title-page">
+    <div class="badge">2026 年全国大学生数学建模竞赛 · A 题论文草稿</div>
+    <h1>药材热风烘干过程的径向传热传质建模与收缩效应分析</h1>
+    <div class="subtitle">基于非线性耦合偏微分方程与有限体积法</div>
+    <div class="meta">
+      <div>队伍编号：________________</div>
+      <div>参赛队员：________________</div>
+      <div>完成日期：2026 年 9 月</div>
+    </div>
+  </section>
+
+  <h2>摘要</h2>
+  <div class="abstract">
+    <p>针对圆柱形药材在热风烘干过程中温度与干基含水率的时空演化问题，本文建立了轴对称一维径向传热—传质模型。首先，在不考虑轴向变化和体积收缩的条件下，根据能量守恒与质量守恒构造圆柱坐标下的耦合偏微分方程，并使用对流换热与表面对流传质边界刻画热空气对物料的作用。其次，针对温度、含水率相关的密度、比热容、导热系数和有效扩散系数，采用保守型有限体积法进行空间离散，使用隐式迭代推进时间；对长时间烘干阶段，则在附件空气参数结束后保持末值，以完成干燥终点预测。最后，在收缩情形下引入材料坐标，将变化区域映射到固定计算域，并同步更新传热、传质面积和单元体积。</p>
+    <p>计算表明：在定物性预热模型下，烘干 \(1800\,\mathrm{s}\) 后中心与表面温度分别为 \(33.5753\,{}^{\circ}\mathrm{C}\) 和 \(36.7856\,{}^{\circ}\mathrm{C}\)，中心与表面干基含水率分别为 \(2.5500\,\mathrm{kg/kg}\) 和 \(1.5102\,\mathrm{kg/kg}\)。采用变物性模型后，\(3\,\mathrm{h}\) 时中心温度达到 \(49.8495\,{}^{\circ}\mathrm{C}\)，中心干基含水率为 \(1.7662\,\mathrm{kg/kg}\)。不考虑收缩时，中心含水率首次降至 \(0.15\,\mathrm{kg/kg}\) 的理论时刻为 \(57.1724\,\mathrm{h}\)；考虑径向收缩后缩短至 \(50.8246\,\mathrm{h}\)，缩短约 \(11.10\%\)。网格加密结果表明关键输出对空间步长具有良好稳定性。</p>
+    <p class="keywords"><strong>关键词：</strong>药材烘干；传热传质；非线性扩散；有限体积法；移动边界；收缩效应</p>
+  </div>
+
+  <h2>Abstract</h2>
+  <div class="abstract en">
+    <p>An axisymmetric one-dimensional radial heat-and-mass transfer model is developed for a cylindrical medicinal material subjected to hot-air drying. The coupled conservation equations are solved with convective heat and mass-transfer boundary conditions. Moisture- and temperature-dependent density, heat capacity, thermal conductivity, and effective diffusivity are incorporated through a conservative finite-volume discretization and implicit time marching. For the shrinkage case, a material coordinate maps the moving radial domain onto a fixed computational interval, while the interfacial areas and control-volume volumes are updated consistently.</p>
+    <p>The computed center and surface temperatures after \(1800\,\mathrm{s}\) are \(33.5753\,{}^{\circ}\mathrm{C}\) and \(36.7856\,{}^{\circ}\mathrm{C}\), respectively, under the constant-property preheating model. With variable properties, the center temperature and dry-basis moisture content at \(3\,\mathrm{h}\) are \(49.8495\,{}^{\circ}\mathrm{C}\) and \(1.7662\,\mathrm{kg/kg}\). The theoretical center-drying time to \(0.15\,\mathrm{kg/kg}\) is \(57.1724\,\mathrm{h}\) without shrinkage and \(50.8246\,\mathrm{h}\) with radial shrinkage, corresponding to an \(11.10\%\) reduction. Grid-refinement tests confirm that the principal outputs are numerically stable.</p>
+    <p><strong>Keywords:</strong> hot-air drying; heat and mass transfer; nonlinear diffusion; finite-volume method; moving boundary; shrinkage</p>
+  </div>
+
+  <h2>1 问题重述与分析</h2>
+  <p>研究对象为长度 \(L=25\,\mathrm{cm}\)、初始半径 \(R_0=2\,\mathrm{cm}\) 的圆柱形药材。初始温度为 \(28\,{}^{\circ}\mathrm{C}\)，初始干基含水率为 \(2.55\,\mathrm{kg/kg}\)。问题要求依次完成：定物性条件下 \(1800\,\mathrm{s}\) 内温度与含水率分布；变物性条件下 \(3\,\mathrm{h}\) 内的分布；预测中心含水率达到 \(0.15\,\mathrm{kg/kg}\) 的时刻；以及考虑径向收缩后的干燥过程与终点。</p>
+  <p>药材长径比为 \(L/(2R_0)=6.25\)。题目仅给出径向表面对流条件，并明确收缩时忽略轴向收缩，因此可将三维问题约化为一维径向问题。温度影响扩散系数，而含水率又影响热物性和扩散系数，故问题本质上是非线性耦合扩散系统。第四问进一步引入随时间变化的计算域。</p>
+
+  <h2>2 模型假设</h2>
+  <ol>
+    <li>药材初始均匀、各向同性，径向物性只由局部温度和含水率决定。</li>
+    <li>忽略轴向传热、传质及端面效应，只考虑侧表面与热空气交换。</li>
+    <li>忽略液态水宏观迁移和内部热源，水分迁移等效为有效扩散。</li>
+    <li>水分蒸发潜热未在题目参数中给出，主模型中不额外引入潜热耦合项。</li>
+    <li>附件空气温度与含湿量序列结束后，长时间预测保持其最后时刻数值不变。</li>
+    <li>第四问仅发生径向均匀收缩，材料点的归一化径向位置保持不变。</li>
+  </ol>
+  <div class="note">第五条是完成第三、四问长时间外推所必需的口径假设。若附件实际另有后续控制曲线，应直接替换外边界序列并重新计算。</div>
+
+  <h2>3 符号说明</h2>
+  <table class="booktabs">
+    <caption>表 1 主要符号及单位</caption>
+    <tr><th>符号</th><th>含义</th><th>单位</th><th>符号</th><th>含义</th><th>单位</th></tr>
+    <tr><td>\(T\)</td><td>物料温度</td><td>\({}^{\circ}\mathrm{C}\) 或 \(\mathrm{K}\)</td><td>\(C\)</td><td>干基含水率</td><td>\(\mathrm{kg/kg}\)</td></tr>
+    <tr><td>\(r\)</td><td>径向坐标</td><td>\(\mathrm{m}\)</td><td>\(R(t)\)</td><td>实时半径</td><td>\(\mathrm{m}\)</td></tr>
+    <tr><td>\(\rho\)</td><td>密度</td><td>\(\mathrm{kg/m^3}\)</td><td>\(c_p\)</td><td>比热容</td><td>\(\mathrm{J/(kg\,K)}\)</td></tr>
+    <tr><td>\(k\)</td><td>导热系数</td><td>\(\mathrm{W/(m\,K)}\)</td><td>\(D\)</td><td>有效扩散系数</td><td>\(\mathrm{m^2/s}\)</td></tr>
+    <tr><td>\(h\)</td><td>对流换热系数</td><td>\(\mathrm{W/(m^2\,K)}\)</td><td>\(h_m\)</td><td>表面对流传质系数</td><td>\(\mathrm{m/s}\)</td></tr>
+    <tr><td>\(T_\infty\)</td><td>空气温度</td><td>\({}^{\circ}\mathrm{C}\)</td><td>\(C_\infty\)</td><td>空气等效含水率</td><td>\(\mathrm{kg/kg}\)</td></tr>
+    <tr><td>\(\xi\)</td><td>材料坐标</td><td>无量纲</td><td>\(t\)</td><td>时间</td><td>\(\mathrm{s}\)</td></tr>
+  </table>
+
+  <h2>4 模型建立</h2>
+  <h3>4.1 固定区域内的传热模型</h3>
+  <p>对半径为 \(R_0\) 的圆柱体取同轴环形微元，根据能量守恒得到：</p>
+  <div class="equation">\[\rho(C)c_p(C)\frac{\partial T}{\partial t}=\frac{1}{r}\frac{\partial}{\partial r}\!\left(k(C)r\frac{\partial T}{\partial r}\right),\qquad 0&lt;r&lt;R_0.\]</div>
+  <p>轴心采用对称边界，侧表面采用第三类边界：</p>
+  <div class="equation">\[\left.\frac{\partial T}{\partial r}\right|_{r=0}=0,\qquad -k\left.\frac{\partial T}{\partial r}\right|_{r=R_0}=h\,[T(R_0,t)-T_\infty(t)].\]</div>
+
+  <h3>4.2 固定区域内的水分扩散模型</h3>
+  <p>以干基含水率描述内部水分状态，采用 Fick 型有效扩散模型：</p>
+  <div class="equation">\[\frac{\partial C}{\partial t}=\frac{1}{r}\frac{\partial}{\partial r}\!\left(D(T,C)r\frac{\partial C}{\partial r}\right).\]</div>
+  <p>相应边界条件为：</p>
+  <div class="equation">\[\left.\frac{\partial C}{\partial r}\right|_{r=0}=0,\qquad -D\left.\frac{\partial C}{\partial r}\right|_{r=R_0}=h_m[C(R_0,t)-C_\infty(t)].\]</div>
+  <p>初始条件为：</p>
+  <div class="equation">\[T(r,0)=28\,{}^{\circ}\mathrm{C},\qquad C(r,0)=2.55\,\mathrm{kg/kg}.\]</div>
+
+  <h3>4.3 各问物性关系</h3>
+  <p>第一问采用定物性参数：</p>
+  <div class="equation">\[\rho=820,\quad c_p=2600,\quad k=0.36,\quad h=25,\quad h_m=8\times10^{-7},\quad D=7\times10^{-9}\exp\!\left(-\frac{0.89}{C}\right).\]</div>
+  <p>第二、三问采用附件给出的变物性关系：</p>
+  <div class="equation">\[\rho=650+128C,\quad c_p=1450+2736\frac{C}{C+1},\quad k=0.21+0.38\frac{C}{C+1},\]</div>
+  <div class="equation">\[D=2.4\times10^{-3}\exp\!\left(-\frac{0.45}{C}\right)\exp\!\left(-\frac{3850}{T_K}\right),\qquad T_K=T+273.15.\]</div>
+  <p>第四问使用收缩药材物性：</p>
+  <div class="equation">\[\rho=760+90C,\quad c_p=1850+2150\frac{C}{C+1},\quad k=0.12+0.20\frac{C}{C+1},\]</div>
+  <div class="equation">\[D=4.2\times10^{-4}\exp\!\left(-\frac{0.30}{C}\right)\exp\!\left(-\frac{3850}{T_K}\right).\]</div>
+
+  <h3>4.4 收缩区域的材料坐标变换</h3>
+  <p>第四问中，物理半径由附件曲线给定。引入固定域材料坐标：</p>
+  <div class="equation">\[\xi=\frac{r}{R(t)},\qquad 0\leq\xi\leq1.\]</div>
+  <p>对随材料运动的场量，径向扩散算子变换为：</p>
+  <div class="equation">\[\frac{\mathrm{D}u}{\mathrm{D}t}=\frac{1}{R^2(t)\xi}\frac{\partial}{\partial\xi}\!\left(a\,\xi\frac{\partial u}{\partial\xi}\right),\qquad u\in\{T,C\}.\]</div>
+  <p>数值实现中直接在每个时间步根据 \(R(t)\) 重算控制体体积和界面面积，从而保留守恒结构；外表面通量仍施加在 \(\xi=1\) 处。</p>
+
+  <h2>5 数值求解方法</h2>
+  <h3>5.1 有限体积离散</h3>
+  <p>将径向区间划分为 \(N\) 个同心环形控制体。第 \(i\) 个单元的单位长度体积和界面面积分别为：</p>
+  <div class="equation">\[V_i=\pi(r_{i+1/2}^2-r_{i-1/2}^2),\qquad A_{i\pm1/2}=2\pi r_{i\pm1/2}.\]</div>
+  <p>以含水率方程为例，后向欧拉离散写为：</p>
+  <div class="equation">\[\frac{V_i(C_i^{n+1}-C_i^n)}{\Delta t}=A_{i+1/2}D_{i+1/2}\frac{C_{i+1}^{n+1}-C_i^{n+1}}{\Delta r}-A_{i-1/2}D_{i-1/2}\frac{C_i^{n+1}-C_{i-1}^{n+1}}{\Delta r}.\]</div>
+  <p>导热方程同理，只需将扩散系数替换为导热系数，并在时间项中乘以体积热容。界面物性采用相邻单元调和平均，表面对流条件直接作为边界通量写入最外层控制体。</p>
+
+  <h3>5.2 非线性迭代与终点判定</h3>
+  <p>每一时间层先使用上一层温度、含水率计算物性，再交替求解温度和水分的三对角线性系统，直至最大相对变化满足容差。第三、四问持续推进至中心单元含水率首次小于阈值 \(C_\mathrm{tar}=0.15\,\mathrm{kg/kg}\)。为降低离散时间造成的终点偏差，在跨越阈值的两个时间层之间进行线性插值：</p>
+  <div class="equation">\[t_*=t_n+\Delta t\,\frac{C_c^n-C_\mathrm{tar}}{C_c^n-C_c^{n+1}}.\]</div>
+  <p>正式提交的操作时刻则向上取整到整分钟，以保证达到而不是略早于目标含水率。</p>
+
+  <h2>6 结果与分析</h2>
+  <h3>6.1 第一问：定物性预热—脱水过程</h3>
+  <p>图 1 展示 \(100\,\mathrm{s}\) 至 \(1800\,\mathrm{s}\) 的径向分布。温度始终由表面向中心递增传播，早期中心几乎保持初温；含水率下降则高度集中在表层，体现出较强的内部扩散阻力。</p>
+  <figure>
+    <img src="../../outputs/figures/problem_a_figure_01_preheat_profiles_v01.png" alt="第一问温度与含水率径向分布">
+    <figcaption>图 1 第一问不同时刻的径向温度与干基含水率分布</figcaption>
+  </figure>
+  <table class="booktabs">
+    <caption>表 2 第一问关键时刻中心与表面结果</caption>
+    <tr><th rowspan="2">时间 / s</th><th colspan="2">温度 / \({}^{\circ}\mathrm{C}\)</th><th colspan="2">干基含水率 / \(\mathrm{kg/kg}\)</th></tr>
+    <tr><th>中心</th><th>表面</th><th>中心</th><th>表面</th></tr>
+    <tr><td>100</td><td>28.0001</td><td>28.1801</td><td>2.5500</td><td>2.2470</td></tr>
+    <tr><td>300</td><td>28.0408</td><td>28.8488</td><td>2.5500</td><td>2.0508</td></tr>
+    <tr><td>600</td><td>28.4533</td><td>30.1652</td><td>2.5500</td><td>1.8770</td></tr>
+    <tr><td>900</td><td>29.3243</td><td>31.7304</td><td>2.5500</td><td>1.7547</td></tr>
+    <tr><td>1200</td><td>30.5427</td><td>33.4276</td><td>2.5500</td><td>1.6586</td></tr>
+    <tr><td>1500</td><td>31.9957</td><td>35.1203</td><td>2.5500</td><td>1.5787</td></tr>
+    <tr><td>1800</td><td>33.5753</td><td>36.7856</td><td>2.5500</td><td>1.5102</td></tr>
+  </table>
+
+  <h3>6.2 第二问：变物性三小时过程</h3>
+  <p>引入变物性后，温度升高会显著放大有效扩散系数，故中心水分在约一小时后开始明显下降。三小时末温度场已接近均匀，而含水率仍保持显著径向梯度，说明中后期干燥速度主要受内部传质控制。</p>
+  <figure>
+    <img src="../../outputs/figures/problem_a_figure_02_q2_profiles_v01.png" alt="第二问温度与含水率径向分布">
+    <figcaption>图 2 第二问每半小时的径向温度与干基含水率分布</figcaption>
+  </figure>
+  <table class="booktabs">
+    <caption>表 3 第二问中心与表面结果</caption>
+    <tr><th rowspan="2">时间 / h</th><th colspan="2">温度 / \({}^{\circ}\mathrm{C}\)</th><th colspan="2">干基含水率 / \(\mathrm{kg/kg}\)</th></tr>
+    <tr><th>中心</th><th>表面</th><th>中心</th><th>表面</th></tr>
+    <tr><td>0.5</td><td>32.1893</td><td>35.4131</td><td>2.5499</td><td>1.6486</td></tr>
+    <tr><td>1.0</td><td>40.3816</td><td>42.9976</td><td>2.5257</td><td>1.4711</td></tr>
+    <tr><td>1.5</td><td>45.8468</td><td>47.1400</td><td>2.3861</td><td>1.3476</td></tr>
+    <tr><td>2.0</td><td>48.4503</td><td>49.0034</td><td>2.1709</td><td>1.2311</td></tr>
+    <tr><td>2.5</td><td>49.4670</td><td>49.6609</td><td>1.9566</td><td>1.1166</td></tr>
+    <tr><td>3.0</td><td>49.8495</td><td>49.9664</td><td>1.7662</td><td>1.0081</td></tr>
+  </table>
+
+  <h3>6.3 第三问：不收缩时的干燥终点</h3>
+  <p>空气附件序列在 \(14400\,\mathrm{s}\) 后以末值 \(T_\infty=50.165\,{}^{\circ}\mathrm{C}\)、\(C_\infty=0.04986\,\mathrm{kg/kg}\) 保持。中心含水率达到 \(0.15\,\mathrm{kg/kg}\) 的插值理论时刻为 \(57.1724\,\mathrm{h}\)。若以整分钟执行，应烘干至 \(57\,\mathrm{h}\,11\,\mathrm{min}\)。</p>
+  <table class="booktabs">
+    <caption>表 4 第三问每六小时干基含水率</caption>
+    <tr><th>时间 / h</th><th>\(r=0\) cm</th><th>\(r=0.5\) cm</th><th>\(r=1.0\) cm</th><th>\(r=1.5\) cm</th><th>\(r=2.0\) cm</th></tr>
+    <tr><td>6</td><td>1.0156</td><td>0.9868</td><td>0.9006</td><td>0.7546</td><td>0.5335</td></tr>
+    <tr><td>12</td><td>0.4548</td><td>0.4418</td><td>0.4019</td><td>0.3289</td><td>0.1639</td></tr>
+    <tr><td>18</td><td>0.2979</td><td>0.2906</td><td>0.2679</td><td>0.2247</td><td>0.0842</td></tr>
+    <tr><td>24</td><td>0.2371</td><td>0.2321</td><td>0.2161</td><td>0.1851</td><td>0.0663</td></tr>
+    <tr><td>30</td><td>0.2053</td><td>0.2013</td><td>0.1887</td><td>0.1637</td><td>0.0597</td></tr>
+    <tr><td>36</td><td>0.1854</td><td>0.1821</td><td>0.1714</td><td>0.1501</td><td>0.0565</td></tr>
+    <tr><td>42</td><td>0.1717</td><td>0.1687</td><td>0.1593</td><td>0.1404</td><td>0.0547</td></tr>
+    <tr><td>48</td><td>0.1615</td><td>0.1588</td><td>0.1504</td><td>0.1332</td><td>0.0536</td></tr>
+    <tr><td>54</td><td>0.1535</td><td>0.1511</td><td>0.1433</td><td>0.1275</td><td>0.0528</td></tr>
+    <tr><td>57.183</td><td>0.1500</td><td>0.1477</td><td>0.1402</td><td>0.1249</td><td>0.0525</td></tr>
+  </table>
+
+  <h3>6.4 第四问：考虑径向收缩</h3>
+  <p>在材料坐标下求解后，中心达到目标含水率的理论时刻为 \(50.8246\,\mathrm{h}\)，整分钟操作时刻为 \(50\,\mathrm{h}\,50\,\mathrm{min}\)，此时半径约为 \(1.2\,\mathrm{cm}\)。相对于不收缩模型，理论干燥时间减少：</p>
+  <div class="equation">\[\eta=\frac{57.1724-50.8246}{57.1724}\times100\%=11.10\%.\]</div>
+  <p>收缩缩短了水分由中心迁移到表面的实际距离，同时改变表面积与单元体积，因此终点提前。图 3 对两种模型的中心和表面含水率进行比较。</p>
+  <figure>
+    <img src="../../outputs/figures/problem_a_figure_03_drying_comparison_v01.png" alt="考虑和不考虑收缩的干燥曲线比较">
+    <figcaption>图 3 第三、四问中心与表面干基含水率的演化比较</figcaption>
+  </figure>
+  <table class="booktabs">
+    <caption>表 5 第四问关键位置干基含水率</caption>
+    <tr><th>时间 / h</th><th>中心</th><th>\(r=0.5\) cm</th><th>\(r=1.0\) cm</th><th>表面</th></tr>
+    <tr><td>6</td><td>1.7172</td><td>1.5357</td><td>1.0217</td><td>0.4217</td></tr>
+    <tr><td>12</td><td>0.7343</td><td>0.6518</td><td>0.4069</td><td>0.1667</td></tr>
+    <tr><td>18</td><td>0.4066</td><td>0.3668</td><td>0.2388</td><td>0.0889</td></tr>
+    <tr><td>24</td><td>0.2837</td><td>0.2599</td><td>0.1783</td><td>0.0671</td></tr>
+    <tr><td>30</td><td>0.2253</td><td>0.2085</td><td>0.1488</td><td>0.0593</td></tr>
+    <tr><td>36</td><td>0.1921</td><td>0.1790</td><td>0.1313</td><td>0.0558</td></tr>
+    <tr><td>42</td><td>0.1706</td><td>0.1598</td><td>0.1196</td><td>0.0539</td></tr>
+    <tr><td>48</td><td>0.1556</td><td>0.1463</td><td>0.1113</td><td>0.0529</td></tr>
+    <tr><td>50.833</td><td>0.1500</td><td>0.1412</td><td>0.1081</td><td>0.0525</td></tr>
+  </table>
+
+  <h2>7 模型检验与误差分析</h2>
+  <h3>7.1 网格收敛性</h3>
+  <p>分别对短时分布和长时间终点进行网格加密。第二问由 \(N=640\) 加密到 \(N=1280\) 后，关键温度最大差异为 \(8.88\times10^{-5}\,{}^{\circ}\mathrm{C}\)，关键含水率最大差异为 \(8.71\times10^{-7}\,\mathrm{kg/kg}\)。第三、四问的结果见表 6。</p>
+  <table class="booktabs">
+    <caption>表 6 长时间模型网格加密检验</caption>
+    <tr><th>模型</th><th>粗网格</th><th>细网格</th><th>终点时间差 / h</th><th>六小时剖面最大差异</th></tr>
+    <tr><td>第三问固定半径</td><td>\(N=1280\)</td><td>\(N=2560\)</td><td>0.0109</td><td>\(2.27\times10^{-5}\)</td></tr>
+    <tr><td>第四问收缩半径</td><td>\(N=1280\)</td><td>\(N=2560\)</td><td>0.00143</td><td>\(2.70\times10^{-5}\)</td></tr>
+  </table>
+
+  <h3>7.2 物理合理性检查</h3>
+  <ul>
+    <li>所有时刻表面温度不高于热空气温度，内部温度不超过表面温度，符合传热方向。</li>
+    <li>含水率随时间单调下降，且表面含水率低于中心含水率，符合外部传质和内部扩散机制。</li>
+    <li>温度场较快趋于均匀，而水分场长期保持梯度，符合热扩散快于水分有效扩散的数量级判断。</li>
+    <li>收缩后扩散路径变短，干燥时间下降，方向上与移动边界物理机制一致。</li>
+  </ul>
+
+  <h3>7.3 主要误差来源</h3>
+  <p>误差主要来自四方面：一是忽略端面导致长圆柱近似偏差；二是将水分迁移简化为单一有效扩散；三是未纳入蒸发潜热和表面结壳；四是空气序列末端采用常值外推。相比空间离散误差，上述模型结构与边界外推假设更可能影响最终干燥时间。</p>
+
+  <h2>8 模型评价与改进</h2>
+  <h3>8.1 优点</h3>
+  <p>模型直接源于守恒定律，参数含义清楚；保守型有限体积法天然适配圆柱几何和第三类边界；同一套程序可通过物性函数切换完成四问；材料坐标避免频繁重构移动网格；网格收敛结果支持关键数值的稳定性。</p>
+  <h3>8.2 局限与改进</h3>
+  <p>当前模型未显式刻画水分相变潜热、材料各向异性和表面收缩应力。若获得实验数据，可进一步把 \(h\)、\(h_m\) 和扩散系数前因子视为待标定参数，用最小二乘或贝叶斯方法进行反演；还可扩展为二维轴对称模型以评价端面效应，并通过不确定性传播给出干燥终点的置信区间。</p>
+
+  <h2>9 结论</h2>
+  <p>本文建立了圆柱药材热风烘干的一维径向非线性传热—传质模型，并通过有限体积法得到四问所需的温度、含水率分布和干燥时间。核心结论如下：</p>
+  <ol>
+    <li>第一问 \(1800\,\mathrm{s}\) 时中心温度为 \(33.5753\,{}^{\circ}\mathrm{C}\)，表面温度为 \(36.7856\,{}^{\circ}\mathrm{C}\)；中心含水率基本未变，表面降至 \(1.5102\,\mathrm{kg/kg}\)。</li>
+    <li>第二问 \(3\,\mathrm{h}\) 时温度场接近均匀，但含水率仍存在明显径向梯度，表明中后期由内部扩散控制。</li>
+    <li>固定半径模型预测中心达到 \(0.15\,\mathrm{kg/kg}\) 的理论时间为 \(57.1724\,\mathrm{h}\)，建议操作时长为 \(57\,\mathrm{h}\,11\,\mathrm{min}\)。</li>
+    <li>径向收缩模型预测理论时间为 \(50.8246\,\mathrm{h}\)，建议操作时长为 \(50\,\mathrm{h}\,50\,\mathrm{min}\)，较固定半径情形缩短约 \(11.10\%\)。</li>
+  </ol>
+
+  <h2>附录 A 可复现性说明</h2>
+  <p>第一问计算脚本为 <code>src/models/problem_a_01_preheat_pde_cc_v01.py</code>；第二至四问计算脚本为 <code>src/models/problem_a_03_full_drying_pde_cc_v01.py</code>。官方结果文件位于 <code>outputs/submissions/problem_a/</code>，图表与诊断文件分别位于 <code>outputs/figures/</code>、<code>outputs/tables/</code> 和 <code>outputs/results/</code>。模型采用确定性算法，不涉及随机采样。</p>
+
+  <h2>附录 B 声明</h2>
+  <p><strong>数据与代码可用性：</strong>本研究数据来自赛题附件，代码、参数、诊断结果和正式结果表均随竞赛仓库保存。</p>
+  <p><strong>作者贡献：</strong>请在提交前由三名队员按实际分工补充模型推导、程序实现、结果核验和论文写作贡献。</p>
+  <p><strong>利益冲突与经费：</strong>本稿不存在商业利益冲突，未使用外部研究经费。</p>
+  <p><strong>人工智能工具披露：</strong>本稿在代码实现、数值核验和排版整理过程中使用了生成式人工智能辅助。全部模型假设、参数口径、计算结果与最终文字应由参赛队员独立复核，并依据竞赛当届规则决定披露方式。</p>
+</body>
+</html>
