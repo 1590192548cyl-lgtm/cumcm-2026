@@ -46,3 +46,15 @@ git push -u origin feat/你的任务
 
 紧急比赛节奏下仍建议通过 Pull Request 合并；至少由另一位队员快速检查后再合并到 `main`。
 
+## A 题计算
+
+从项目根目录运行：
+
+```bash
+python3 src/models/problem_a_01_preheat_pde_cc_v01.py
+python3 src/models/problem_a_03_full_drying_pde_cc_v01.py
+```
+
+前一条命令计算问题 1，后一条命令计算问题 2 至问题 4。机器可读结果写入 `outputs/results/`，论文表格写入 `outputs/tables/`，图片写入 `outputs/figures/`。按题目模板生成的 `result1.xlsx` 至 `result4.xlsx` 位于 `outputs/submissions/problem_a/`。
+
+完整模型、长期炉况外推假设和论文表 1 至表 6 的数值见 `docs/20260910_2000_problem_a_full_solution_cc.md`。

@@ -1,0 +1,59 @@
+{
+  "air_extension_after_14400_s": {
+    "method": "constant continuation of final observation",
+    "temperature_c": 50.165,
+    "moisture_kg_per_kg": 0.04986
+  },
+  "boundary_coefficients_retained_from_appendix_2": {
+    "h_w_per_m2_k": 25.0,
+    "hm_m_per_s": 8e-07
+  },
+  "question_2": {
+    "grid_intervals": 1280,
+    "grid_dr_cm": 0.0015625,
+    "coarse_grid_intervals": 640,
+    "key_time_max_abs_temperature_difference_c": 8.878720783656036e-05,
+    "key_time_max_abs_moisture_difference_kg_per_kg": 8.707641772076613e-07
+  },
+  "question_3": {
+    "grid_intervals": 2560,
+    "coarse_grid_intervals": 1280,
+    "drying_time_s_interpolated": 205820.49598087516,
+    "drying_time_h_interpolated": 57.17235999468755,
+    "coarse_drying_time_h_interpolated": 57.18328453096574,
+    "drying_time_abs_difference_h": 0.010924536278196482,
+    "six_hour_max_abs_moisture_difference_kg_per_kg": 2.2748932004351685e-05,
+    "operational_end_s": 205860,
+    "operational_end_h": 57.18333333333333,
+    "maximum_moisture_at_operational_end": 0.1499884250715273
+  },
+  "question_4": {
+    "grid_intervals": 2560,
+    "coarse_grid_intervals": 1280,
+    "coordinate": "normalized material radius xi=r/R(t)",
+    "drying_time_s_interpolated": 182968.69937816332,
+    "drying_time_h_interpolated": 50.82463871615648,
+    "coarse_drying_time_h_interpolated": 50.826072395236146,
+    "drying_time_abs_difference_h": 0.001433679079669269,
+    "six_hour_max_abs_moisture_difference_kg_per_kg": 2.7048618229413846e-05,
+    "operational_end_s": 183000,
+    "operational_end_h": 50.833333333333336,
+    "radius_at_operational_end_cm": 1.2,
+    "maximum_moisture_at_operational_end": 0.14998382833378227
+  },
+  "physical_checks": {
+    "q2_temperature_min_c": 28.0,
+    "q2_temperature_max_c": 49.96637691671987,
+    "q2_moisture_min": 1.00812297841513,
+    "q2_moisture_max": 2.55,
+    "q3_moisture_nonnegative": true,
+    "q4_moisture_nonnegative": true
+  },
+  "software": {
+    "python": "3.14.3",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9"
+  }
+}
