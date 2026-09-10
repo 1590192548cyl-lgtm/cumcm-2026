@@ -1,0 +1,57 @@
+# Operating systems
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MATLAB
+*.asv
+*.autosave
+slprj/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+~$*
+
+# Generated submission archives
+outputs/submissions/*.zip
+outputs/submissions/*.7z
+
+# Large local-only data (uncomment if needed)
+# data/raw/*
+# !data/raw/.gitkeep
+
