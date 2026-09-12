@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "checked_at": "2026-09-12T14:58:06",
+  "check_count": 15,
+  "checks": [
+    "air-condition workbook exists",
+    "radius-history workbook exists",
+    "air-condition headers match",
+    "radius-history headers match",
+    "air-condition table has 241 observations",
+    "radius-history table has 145 observations",
+    "air-condition values are finite",
+    "radius-history values are finite",
+    "air timeline is 0-14400 s by 60 s",
+    "radius timeline is 0-259200 s by 1800 s",
+    "air temperatures are positive",
+    "air moisture values are nonnegative",
+    "radius values are positive",
+    "radius is nonincreasing",
+    "initial radius is 2 cm"
+  ],
+  "air_conditions": {
+    "rows": 241,
+    "time_min_s": 0.0,
+    "time_max_s": 14400.0,
+    "final_temperature_c": 50.165,
+    "final_moisture_kg_per_kg": 0.04986
+  },
+  "radius_history": {
+    "rows": 145,
+    "time_min_s": 0.0,
+    "time_max_s": 259200.0,
+    "initial_radius_cm": 2.0,
+    "final_radius_cm": 1.198
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "data_contract": {
+    "raw_attachments_unchanged": true,
+    "air_attachment_sha256": "7ef32870abeef420b89560b2530ff60dfe4255917805151d89988d0311af9dd7",
+    "radius_attachment_sha256": "5563acbfa4b4afb10cc6c03e2207e5369bf39da27576672aff14cc5c32e704af",
+    "teammate_update_interpretation": "The teammate branch changes discretization and reporting; the two raw attachment hashes are identical to the current workspace inputs."
+  },
+  "teammate_backward_euler_baseline": {
+    "question_3_h": 57.2107679919847,
+    "question_4_h": 50.863359389520554,
+    "grid_intervals": 640,
+    "method": "backward Euler finite volume, arithmetic face average"
+  },
+  "bdf_event_baseline": {
+    "grid_intervals": 640,
+    "face_average": "arithmetic",
+    "rtol": 2e-07,
+    "max_step_s": 60.0,
+    "question_3_h": 57.15905572537566,
+    "question_4_h": 50.82301195389804
+  },
+  "event_tolerance_and_step_audit": [
+    {
+      "case": "rtol=2e-06,max_step=60",
+      "question": 3,
+      "drying_time_h": 57.16029318520581,
+      "change_percent": 0.002164940995694559
+    },
+    {
+      "case": "rtol=2e-06,max_step=60",
+      "question": 4,
+      "drying_time_h": 50.824106021842624,
+      "change_percent": 0.0021527019012128946
+    },
+    {
+      "case": "rtol=2e-07,max_step=60",
+      "question": 3,
+      "drying_time_h": 57.15905572537566,
+      "change_percent": 0.0
+    },
+    {
+      "case": "rtol=2e-07,max_step=60",
+      "question": 4,
+      "drying_time_h": 50.82301195389804,
+      "change_percent": 0.0
+    },
+    {
+      "case": "rtol=2e-08,max_step=30",
+      "question": 3,
+      "drying_time_h": 57.15876991140424,
+      "change_percent": -0.000500032703111072
+    },
+    {
+      "case": "rtol=2e-08,max_step=30",
+      "question": 4,
+      "drying_time_h": 50.82281861279123,
+      "change_percent": -0.00038042040283523866
+    }
+  ],
+  "display_safety": {
+    "question_3": {
+      "operational_end_s": 206100,
+      "computed_final_max": 0.1499041578782431,
+      "error_margin": 3e-05,
+      "upper_bound": 0.1499341578782431,
+      "display_threshold": 0.14995,
+      "verified": true
+    },
+    "question_4": {
+      "operational_end_s": 183120,
+      "computed_final_max": 0.14991887868629833,
+      "error_margin": 3e-05,
+      "upper_bound": 0.14994887868629833,
+      "display_threshold": 0.14995,
+      "verified": true
+    }
+  },
+  "long_time_boundary_extension": {
+    "tail_window_s": [
+      9000,
+      14400
+    ],
+    "tail_temperature_mean_c": 50.004945054945054,
+    "tail_moisture_mean_kg_per_kg": 0.04999373626373625,
+    "cases": [
+      {
+        "case": "air_extension_last",
+        "question": 3,
+        "drying_time_h": 57.15905572537566,
+        "change_percent": 0.0
+      },
+      {
+        "case": "air_extension_last",
+        "question": 4,
+        "drying_time_h": 50.82301195389804,
+        "change_percent": 0.0
+      },
+      {
+        "case": "air_extension_tail_mean",
+        "question": 3,
+        "drying_time_h": 57.45285225471637,
+        "change_percent": 0.5139982206009045
+      },
+      {
+        "case": "air_extension_tail_mean",
+        "question": 4,
+        "drying_time_h": 51.081335211152386,
+        "change_percent": 0.5082801025029245
+      },
+      {
+        "case": "air_extension_smooth_tail_mean",
+        "question": 3,
+        "drying_time_h": 57.45041677777291,
+        "change_percent": 0.5097373438027252
+      },
+      {
+        "case": "air_extension_smooth_tail_mean",
+        "question": 4,
+        "drying_time_h": 51.07808379979015,
+        "change_percent": 0.5018825844550275
+      }
+    ]
+  },
+  "diffusivity_sensitivity": [
+    {
+      "case": "D_prefactor_minus20",
+      "question": 3,
+      "drying_time_h": 69.83818091172525,
+      "change_percent": 22.182180978054042
+    },
+    {
+      "case": "D_prefactor_minus20",
+      "question": 4,
+      "drying_time_h": 62.011086049724085,
+      "change_percent": 22.013795848964712
+    },
+    {
+      "case": "D_prefactor_plus20",
+      "question": 3,
+      "drying_time_h": 48.78656774807027,
+      "change_percent": -14.647701700202228
+    },
+    {
+      "case": "D_prefactor_plus20",
+      "question": 4,
+      "drying_time_h": 43.399995789514925,
+      "change_percent": -14.60562032631319
+    },
+    {
+      "case": "D_moisture_exponent_minus10",
+      "question": 3,
+      "drying_time_h": 45.34733952339698,
+      "change_percent": -20.664645439086367
+    },
+    {
+      "case": "D_moisture_exponent_minus10",
+      "question": 4,
+      "drying_time_h": 43.99753997976457,
+      "change_percent": -13.429884833124238
+    },
+    {
+      "case": "D_moisture_exponent_plus10",
+      "question": 3,
+      "drying_time_h": 72.97239167209163,
+      "change_percent": 27.66549542506818
+    },
+    {
+      "case": "D_moisture_exponent_plus10",
+      "question": 4,
+      "drying_time_h": 59.06286203616762,
+      "change_percent": 16.21283305630138
+    },
+    {
+      "case": "D_activation_exponent_minus5",
+      "question": 3,
+      "drying_time_h": 34.85279704195585,
+      "change_percent": -39.02489010768767
+    },
+    {
+      "case": "D_activation_exponent_minus5",
+      "question": 4,
+      "drying_time_h": 30.962352715904142,
+      "change_percent": -39.078083872733984
+    },
+    {
+      "case": "D_activation_exponent_plus5",
+      "question": 3,
+      "drying_time_h": 98.76247604252933,
+      "change_percent": 72.78535271303285
+    },
+    {
+      "case": "D_activation_exponent_plus5",
+      "question": 4,
+      "drying_time_h": 87.33254880469805,
+      "change_percent": 71.83662566854184
+    }
+  ],
+  "radius_interpolation": {
+    "case": "radius_pchip",
+    "question": 4,
+    "drying_time_h": 50.81952092161699,
+    "change_percent": -0.006868999193149487
+  },
+  "constant_radius_degeneration": {
+    "direct_fixed_domain_h": 129.08618109126078,
+    "moving_domain_with_R_equal_R0_h": 129.08618109126078,
+    "absolute_difference_s": 0.0,
+    "passed": true
+  },
+  "question_4_effective_pde_integral_balance": {
+    "meaning": "Integral balance of the selected effective material-coordinate PDE; not a full deforming porous-medium mass balance.",
+    "state_change": -1.215829829090135,
+    "integrated_boundary_rate": -1.2160859106745416,
+    "absolute_residual": 0.0002560815844065978,
+    "relative_residual": 0.00021062288346572,
+    "quadrature_interval_s": 60.0
+  },
+  "legacy_167h_branch_recheck": [
+    {
+      "intervals": 320,
+      "drying_time_h": 168.17419744147423,
+      "note": "legacy perturbation changes the final observed point itself"
+    },
+    {
+      "intervals": 1280,
+      "drying_time_h": 57.49935098067265,
+      "note": "legacy perturbation changes the final observed point itself"
+    }
+  ],
+  "wording_contract": {
+    "allowed": "The finite-volume scheme satisfies the integral balance of the selected effective PDE; this does not establish a full deforming porous-medium mass balance.",
+    "latent_heat": "The latent-heat calculation is an identifiability and scale audit, not a validated latent-heat-enhanced prediction."
+  }
+}

@@ -1,5 +1,16 @@
 # 论文 LaTeX 工程说明
 
+## 当前正式版本
+
+经事件定位、网格收敛、长期边界、收缩反事实与蒸发潜热审计后的正式版本为：
+
+- `problem_a/problem_a_paper_cc_v03.tex`
+- `problem_a/problem_a_paper_cc_v03.pdf`
+- `problem_a/problem_a_ai_usage_cc_v01.tex`
+- `problem_a/problem_a_ai_usage_cc_v01.pdf`
+
+`main.tex`、`paper.html` 与原有 `figures/`、`tables/` 保留为队友基线工程，便于比较和回退，不再作为当前提交入口。正式论文从仓库根目录编译时，应使用 XeLaTeX 或 Tectonic，并保持 `outputs/figures/` 的相对路径不变。
+
 ## 文件结构
 
 ```

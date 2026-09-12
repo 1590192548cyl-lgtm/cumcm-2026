@@ -1,0 +1,5 @@
+case,material,radius_path,drying_time_s,drying_time_h
+appendix3_fixed,appendix_3_fixed_radius,fixed 2 cm,205772.00595060,57.15889054
+appendix3_shrinking,appendix_3_fixed_radius,measured shrinkage,90483.65128532,25.13434758
+appendix4_fixed,appendix_4_shrinking_radius,fixed 2 cm,464709.21062516,129.08589184
+appendix4_shrinking,appendix_4_shrinking_radius,measured shrinkage,182962.42925305,50.82289701

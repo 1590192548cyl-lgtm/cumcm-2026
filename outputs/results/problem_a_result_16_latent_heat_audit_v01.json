@@ -1,0 +1,21 @@
+{
+  "scope": "diagnostic only; official model and official outputs unchanged",
+  "diagnostic_assumptions": {
+    "latent_heat_j_per_kg": 2400000.0,
+    "dry_mass_density_relation": "rho_d = (650 + 128 C_s)/(1 + C_s)",
+    "surface_water_flux_relation": "j_w = rho_d h_m max(C_s - C_air, 0)"
+  },
+  "question_2_first_3h": {
+    "minimum_latent_to_convective_flux_ratio": 6.495733059218739,
+    "time_of_minimum_ratio_s": 1860.0
+  },
+  "at_1800_s": {
+    "convective_heat_flux_w_per_m2": 152.49884199999997,
+    "latent_heat_flux_demand_w_per_m2": 1008.3622815953883,
+    "latent_to_convective_flux_ratio": 6.612261892423999,
+    "available_temperature_difference_k": 6.099953679999999,
+    "required_temperature_difference_k": 40.33449126381553,
+    "instantaneous_balance_temperature_c": 1.1785087361844688
+  },
+  "decision": "Do not insert the naive latent sink into the official model.  The supplied heat and mass boundary laws are not jointly energy-closed under this conversion.  A physically coupled replacement needs dry-matter density, a sorption/equilibrium relation, and energy-limited evaporation calibration."
+}

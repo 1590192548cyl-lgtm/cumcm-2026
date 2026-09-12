@@ -46,3 +46,28 @@ git push -u origin feat/你的任务
 
 紧急比赛节奏下仍建议通过 Pull Request 合并；至少由另一位队员快速检查后再合并到 `main`。
 
+## A 题当前交付版本
+
+本分支以队友提交 `c6e7dd5` 的完整数据与有限体积实现为底稿，叠加 BDF 事件根、显示安全裕量、长期炉况延拓、收缩域退化测试、蒸发潜热量级审计和扩散关系灵敏度复核。
+
+从项目根目录运行快速检查：
+
+```bash
+python3 src/problem_a_pipeline_cc_v01.py --stage all --profile quick
+```
+
+正式重算、导出和验证：
+
+```bash
+python3 src/problem_a_pipeline_cc_v01.py --stage all --profile final
+```
+
+当前正式文件：
+
+- 论文：`paper/problem_a/problem_a_paper_cc_v03.pdf`
+- 论文源码：`paper/problem_a/problem_a_paper_cc_v03.tex`
+- AI 使用详情：`paper/problem_a/problem_a_ai_usage_cc_v01.pdf`
+- 提交工作簿：`outputs/submissions/problem_a/result1.xlsx` 至 `result4.xlsx`
+- 本轮决策与审计：`docs/20260912_1435_problem_a_epic_revision_cc.md`
+
+所有新增脚本均直接读取队友保留的 `data/raw/problem_a_raw_attachment_1_v01.xlsx` 与 `data/raw/problem_a_raw_attachment_2_v01.xlsx`，未复制或改写原始数据。
