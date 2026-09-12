@@ -290,17 +290,11 @@ V_i^{\ast}\frac{\dif u_i}{\dif t}
 t_{\mathrm{dry}}=\inf\left\{t:\max_{0\le r\le R(t)}C(r,t)<0.15\right\}.
 \label{eq:drytime}
 \end{equation}
-数值序列中最大值始终位于中心。本文将事件函数 $g(t)=C(0,t)-0.15$ 直接交给 BDF 求解器作根定位，而不再用相邻 $60\unit{s}$ 输出点线性插值。官方文件按四位小数显示；为保证离散误差计入后仍严格显示为 $0.1499$，采用
-\begin{equation}
-C_{\max}^{(N)}(t)+\varepsilon_C<0.14995,
-\qquad \varepsilon_C=3.0\times10^{-5},
-\label{eq:display_safe}
-\end{equation}
-并将首次满足该式的时刻向上取整到下一完整 $60\unit{s}$。其中 $\varepsilon_C$ 大于当前两级网格在关键时刻的最大差。连续事件时长用于模型解释，保守时长用于 Excel 最后一行。
+数值序列中最大值始终位于中心。本文将事件函数 $g(t)=C(0,t)-0.15$ 直接交给 BDF 求解器作根定位，而不再用相邻 $60\unit{s}$ 输出点线性插值。官方文件按四位小数显示。结果文件取满足 $C_{\max}\le0.15\unit{kg/kg}$ 的首个 $60\unit{s}$ 网格点作为末行；连续事件时长用于模型解释，该网格时刻用于 Excel 最后一行。
 
 \section{问题 1：预热阶段}
 
-问题 1 在固定半径 $R=2\unit{cm}$ 上使用式\eqref{eq:q1_D}与常热物性。内部网格取 $N=2560$，每 $1\unit{s}$ 输出一次，并插值得到每隔 $0.1\unit{cm}$ 的结果。图\ref{fig:q1profiles}显示，温度从表面向中心传播，而水分由表层先行逸出；在前 $1800\unit{s}$ 内，水分前沿尚未使中心发生可见变化。代表性节点值见表\ref{tab:q1temperature}和表\ref{tab:q1moisture}。
+问题 1 在固定半径 $R=2\unit{cm}$ 上使用式\eqref{eq:q1_D}与常热物性。内部网格取 $N=640$、时间步 $0.1\unit{s}$，每 $1\unit{s}$ 输出一次，并插值得到每隔 $0.1\unit{cm}$ 的结果。图\ref{fig:q1profiles}显示，温度从表面向中心传播，而水分由表层先行逸出；在前 $1800\unit{s}$ 内，水分前沿尚未使中心发生可见变化。代表性节点值见表\ref{tab:q1temperature}和表\ref{tab:q1moisture}。
 
 \begin{figure}[H]
 \centering
@@ -352,7 +346,7 @@ C_{\max}^{(N)}(t)+\varepsilon_C<0.14995,
 
 \section{问题 2：变物性完整烘干模型}
 
-问题 2 用式\eqref{eq:appendix3}替换常物性，仍令 $R=2\unit{cm}$。前 $3\unit{h}$ 完全处于附件 1 的观测范围内，不涉及长期外推。正式网格取 $N=1280$。图\ref{fig:q2profiles}表明，温度场在 $3\unit{h}$ 内已接近 $50\,^{\circ}\mathrm{C}$，但水分仍保留明显径向梯度，说明后续干燥时长主要受内部传质控制；详细节点值列于表\ref{tab:q2temperature}和表\ref{tab:q2moisture}。
+问题 2 用式\eqref{eq:appendix3}替换常物性，仍令 $R=2\unit{cm}$。前 $3\unit{h}$ 完全处于附件 1 的观测范围内，不涉及长期外推。正式网格取 $N=640$。图\ref{fig:q2profiles}表明，温度场在 $3\unit{h}$ 内已接近 $50\,^{\circ}\mathrm{C}$，但水分仍保留明显径向梯度，说明后续干燥时长主要受内部传质控制；详细节点值列于表\ref{tab:q2temperature}和表\ref{tab:q2moisture}。
 
 \begin{figure}[H]
 \centering
@@ -406,7 +400,7 @@ $3\unit{h}$ 时，中心与表面温度之差仅为 $0.1169\,^{\circ}\mathrm{C}$
 \begin{equation}
 t_{\mathrm{dry},3}\approx57.2\unit{h}\approx2.38\unit{d}.
 \end{equation}
-结果文件的结束行不直接取理论根，而按式\eqref{eq:display_safe}增加显示与离散双重余量。正式重算得到结束时刻 $205980\unit{s}=57.2167\unit{h}$，计算最大值为 $0.1500\unit{kg/kg}$（四位显示值），满足 $C_{\max}\le0.15\unit{kg/kg}$。表\ref{tab:q3}列出关键时刻的径向分布。
+结果文件的结束行取满足判据的首个 $60\unit{s}$ 网格点，不直接用事件根外推；该点为 $205980\unit{s}=57.2167\unit{h}$，计算最大值为 $0.1500\unit{kg/kg}$（四位显示值），满足 $C_{\max}\le0.15\unit{kg/kg}$。表\ref{tab:q3}列出关键时刻的径向分布。
 
 \begin{table}[H]
 \centering
@@ -443,7 +437,7 @@ t_{\mathrm{dry},4}\approx50.9\unit{h}\approx2.12\unit{d},
 \begin{equation}
 C_{\max}=0.1500\ \text{（四位显示值）}\le0.15.
 \end{equation}
-因此该末行满足式\eqref{eq:display_safe}。图\ref{fig:endpoint}直观展示两问的达标前沿与收缩边界。
+因此该末行即为判据首次满足的 $60\unit{s}$ 网格点。图\ref{fig:endpoint}直观展示两问的达标前沿与收缩边界。
 
 \begin{figure}[H]
 \centering
