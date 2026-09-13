@@ -22,6 +22,41 @@ AIR_FILE = ROOT / "data" / "raw" / "problem_a_raw_attachment_1_v01.xlsx"
 RADIUS_FILE = ROOT / "data" / "raw" / "problem_a_raw_attachment_2_v01.xlsx"
 LATENT_AUDIT_FILE = TABLES / "problem_a_table_07_latent_heat_audit_v01.csv"
 
+# The four main-result figures must use the exact arrays committed in
+# c6e7dd5.  Later CSVs are retained only for the independent BDF audit.
+NPZ_WIDE_SOURCES = {
+    "problem_a_result_01_preheat_temperature_v01.csv": (
+        "problem_a_result_08_fields_p1_v01.npz",
+        "T",
+        "fixed",
+    ),
+    "problem_a_result_02_preheat_moisture_v01.csv": (
+        "problem_a_result_08_fields_p1_v01.npz",
+        "C",
+        "fixed",
+    ),
+    "problem_a_result_05_q2_temperature_v01.csv": (
+        "problem_a_result_09_fields_p2_3h_v01.npz",
+        "T",
+        "fixed",
+    ),
+    "problem_a_result_06_q2_moisture_v01.csv": (
+        "problem_a_result_09_fields_p2_3h_v01.npz",
+        "C",
+        "fixed",
+    ),
+    "problem_a_result_07_q3_moisture_v01.csv": (
+        "problem_a_result_10_fields_p3_v01.npz",
+        "C",
+        "fixed",
+    ),
+    "problem_a_result_08_q4_moisture_v01.csv": (
+        "problem_a_result_11_fields_p4_v01.npz",
+        "C",
+        "shrinking",
+    ),
+}
+
 
 def select_chinese_font() -> str:
     """Choose an installed CJK font by family name, without OS-specific paths."""
@@ -118,7 +153,21 @@ def save_figure(fig: plt.Figure, stem: str) -> None:
 
 
 def read_wide(name: str) -> pd.DataFrame:
-    return pd.read_csv(RESULTS / name)
+    source = NPZ_WIDE_SOURCES.get(name)
+    if source is None:
+        return pd.read_csv(RESULTS / name)
+    archive_name, field_name, geometry = source
+    archive = np.load(RESULTS / archive_name)
+    values = archive[field_name]
+    if geometry == "shrinking":
+        radii_cm = [0.1 * index for index in range(20)]
+        columns = [f"r_{radius:.1f}_cm" for radius in radii_cm] + ["surface"]
+    else:
+        radii_cm = np.linspace(0.0, 2.0, values.shape[1])
+        columns = [f"r_{radius:.1f}_cm" for radius in radii_cm]
+    frame = pd.DataFrame(values, columns=columns)
+    frame.insert(0, "time_s", archive["t"])
+    return frame
 
 
 def radii_from_columns(frame: pd.DataFrame) -> np.ndarray:

@@ -56,7 +56,7 @@ git push -u origin feat/你的任务
 python3 src/problem_a_pipeline_cc_v01.py --stage all --profile quick
 ```
 
-正式重算、导出和验证：
+独立 BDF 重算、导出和验证（仅作稳健性复核，不替换正式数据基线）：
 
 ```bash
 python3 src/problem_a_pipeline_cc_v01.py --stage all --profile final
@@ -70,4 +70,4 @@ python3 src/problem_a_pipeline_cc_v01.py --stage all --profile final
 - 提交工作簿：`outputs/submissions/problem_a/result1.xlsx` 至 `result4.xlsx`
 - 本轮决策与审计：`docs/20260912_1435_problem_a_epic_revision_cc.md`
 
-所有新增脚本均直接读取队友保留的 `data/raw/problem_a_raw_attachment_1_v01.xlsx` 与 `data/raw/problem_a_raw_attachment_2_v01.xlsx`，未复制或改写原始数据。
+正式数值基线锁定为提交 `c6e7dd5` 中的全隐式有限体积结果。正文表 1--6、问题 1--4 的结论、主结果图和四个提交工作簿均由该提交保存的未舍入数组生成；后续 BDF 结果只用于独立复核。两份原始附件仍为 `data/raw/problem_a_raw_attachment_1_v01.xlsx` 与 `data/raw/problem_a_raw_attachment_2_v01.xlsx`，未复制或改写。
