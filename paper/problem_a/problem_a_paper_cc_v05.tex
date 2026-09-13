@@ -341,7 +341,7 @@ t_{\mathrm{dry}}=\inf\left\{t:\max_{0\le r\le R(t)}C(r,t)<0.15\right\}.
 \end{tabular}
 \end{table}
 
-预热 $1800\unit{s}$ 后，中心与表面温度分别为 $33.5755\,^{\circ}\mathrm{C}$ 和 $36.7856\,^{\circ}\mathrm{C}$，中心与表面水分浓度分别为 $2.5500\unit{kg/kg}$ 和 $1.5102\unit{kg/kg}$。升温已传至内部，而失水仍集中于外层，传热快于传质。
+综合图\ref{fig:q1profiles}和表\ref{tab:q1temperature}、表\ref{tab:q1moisture}可知，预热 $1800\unit{s}$ 后，中心与表面温度分别为 $33.5755\,^{\circ}\mathrm{C}$ 和 $36.7856\,^{\circ}\mathrm{C}$，中心与表面水分浓度分别为 $2.5500\unit{kg/kg}$ 和 $1.5102\unit{kg/kg}$。升温已传至内部，而失水仍集中于外层，表明该阶段传热快于传质。
 
 
 \section{问题 2：变物性完整烘干模型}
@@ -362,7 +362,7 @@ t_{\mathrm{dry}}=\inf\left\{t:\max_{0\le r\le R(t)}C(r,t)<0.15\right\}.
 \small
 \begin{tabular}{rrrrrr}
 \toprule
-时间/$\mathrm{h}$ & $0\unit{cm}$ & $0.5\unit{cm}$ & $1.0\unit{cm}$ & $1.5\unit{cm}$ & $2.0\unit{cm}$ \\
+时间/$\mathrm{s}$ & $0\unit{cm}$ & $0.5\unit{cm}$ & $1.0\unit{cm}$ & $1.5\unit{cm}$ & $2.0\unit{cm}$ \\
 1800 & 32.1894 & 32.3823 & 32.9661 & 33.9609 & 35.4131 \\
 3600 & 40.3816 & 40.5536 & 41.0605 & 41.8782 & 42.9976 \\
 5400 & 45.8467 & 45.9347 & 46.1929 & 46.6050 & 47.1400 \\
@@ -380,7 +380,7 @@ t_{\mathrm{dry}}=\inf\left\{t:\max_{0\le r\le R(t)}C(r,t)<0.15\right\}.
 \small
 \begin{tabular}{rrrrrr}
 \toprule
-时间/$\mathrm{h}$ & $0\unit{cm}$ & $0.5\unit{cm}$ & $1.0\unit{cm}$ & $1.5\unit{cm}$ & $2.0\unit{cm}$ \\
+时间/$\mathrm{s}$ & $0\unit{cm}$ & $0.5\unit{cm}$ & $1.0\unit{cm}$ & $1.5\unit{cm}$ & $2.0\unit{cm}$ \\
 1800 & 2.5499 & 2.5489 & 2.5256 & 2.3257 & 1.6486 \\
 3600 & 2.5257 & 2.4948 & 2.3578 & 2.0230 & 1.4711 \\
 5400 & 2.3861 & 2.3256 & 2.1344 & 1.8020 & 1.3476 \\
@@ -391,7 +391,7 @@ t_{\mathrm{dry}}=\inf\left\{t:\max_{0\le r\le R(t)}C(r,t)<0.15\right\}.
 \end{tabular}
 \end{table}
 
-$3\unit{h}$ 时，中心与表面温度之差仅为 $0.1169\,^{\circ}\mathrm{C}$，而中心与表面水分浓度之差仍为 $0.7581\unit{kg/kg}$。温度场已接近平衡，水分场仍有显著径向梯度，后续干燥主要受内部扩散控制。
+由表\ref{tab:q2temperature}和表\ref{tab:q2moisture}可知，$3\unit{h}$ 时中心与表面温度之差仅为 $0.1169\,^{\circ}\mathrm{C}$，而中心与表面水分浓度之差仍为 $0.7581\unit{kg/kg}$。因此，温度场已接近平衡，水分场仍有显著径向梯度，后续干燥主要受内部扩散控制。
 
 
 \section{问题 3：固定半径下的达标时间}
@@ -400,7 +400,15 @@ $3\unit{h}$ 时，中心与表面温度之差仅为 $0.1169\,^{\circ}\mathrm{C}$
 \begin{equation}
 t_{\mathrm{dry},3}\approx57.2\unit{h}\approx2.38\unit{d}.
 \end{equation}
-结果文件的结束行取满足判据的首个 $60\unit{s}$ 网格点，不直接用事件根外推；该点为 $205980\unit{s}=57.2167\unit{h}$，计算最大值为 $0.1500\unit{kg/kg}$（四位显示值），满足 $C_{\max}\le0.15\unit{kg/kg}$。表\ref{tab:q3}列出关键时刻的径向分布。
+结果文件的结束行取满足判据的首个 $60\unit{s}$ 网格点，不直接用事件根外推。该点对应
+\[
+t_{\mathrm{end},3}=205980\unit{s}=57.2167\unit{h},
+\]
+此时计算最大值的四位显示结果满足
+\[
+C_{\max}=0.1500\unit{kg/kg}\le0.15\unit{kg/kg}.
+\]
+表\ref{tab:q3}列出关键时刻的径向分布。
 
 \begin{table}[H]
 \centering
@@ -424,7 +432,7 @@ t_{\mathrm{dry},3}\approx57.2\unit{h}\approx2.38\unit{d}.
 \end{tabular}
 \end{table}
 
-固定半径且采用附录 3 物性时，理论达标时间为约 $57.2\unit{h}$（$2.38\unit{d}$）。结果文件末行为 $205980\unit{s}=57.2167\unit{h}$，此时 $C_{\max}=0.1500\unit{kg/kg}$（四位显示值），全域满足 $C\le0.15\unit{kg/kg}$。
+综上，固定半径且采用附录 3 物性时，理论达标时间为约 $57.2\unit{h}$（$2.38\unit{d}$）。结果文件末行为 $205980\unit{s}=57.2167\unit{h}$，此时 $C_{\max}=0.1500\unit{kg/kg}$（四位显示值），全域满足 $C\le0.15\unit{kg/kg}$。
 
 
 \section{问题 4：考虑半径收缩的烘干时间}
@@ -469,7 +477,7 @@ C_{\max}=0.1500\ \text{（四位显示值）}\le0.15.
 
 表\ref{tab:q4}中的“--”表示 $1.5\unit{cm}$ 已位于收缩后药材表面之外，因此该物理位置不再定义药材内部水分浓度。结果文件仍保留题目模板的固定距离列，同时增设“药材表面”列；超出瞬时半径的单元格保持空白。
 
-采用附录 4 物性与实测收缩路径时，理论达标时间为约 $50.9\unit{h}$（$2.12\unit{d}$），结束半径约为 $1.200\unit{cm}$。结果文件末行为 $183120\unit{s}=50.8667\unit{h}$，满足 $C_{\max}=0.1500\unit{kg/kg}$（四位显示值）。
+因此，采用附录 4 物性与实测收缩路径时，理论达标时间为约 $50.9\unit{h}$（$2.12\unit{d}$），结束半径约为 $1.200\unit{cm}$。结果文件末行为 $183120\unit{s}=50.8667\unit{h}$，满足 $C_{\max}=0.1500\unit{kg/kg}$（四位显示值）。
 
 
 \section{模型检验、反事实与灵敏度分析}
@@ -647,6 +655,7 @@ $D_0$ 改变 $\pm20\%$ 时，两问时长约变化 $-14.6\%\sim+22.2\%$；$a_C$ 
 本参赛队在竞赛过程中使用了AI工具，主要用于代码调试、数值结果复核、图表排版和论文语言整理，详细使用情况见支撑材料。
 
 \begin{thebibliography}{99}
+\small
 \bibitem{bergman2018} Bergman T L, Lavine A S, Incropera F P, et al. Fundamentals of Heat and Mass Transfer[M]. 8th ed. Hoboken: Wiley, 2018.
 \bibitem{crank1975} Crank J. The Mathematics of Diffusion[M]. 2nd ed. Oxford: Clarendon Press, 1975.
 \bibitem{patankar1980} Patankar S V. Numerical Heat Transfer and Fluid Flow[M]. New York: Hemisphere Publishing, 1980. DOI: 10.1201/9781482234213.

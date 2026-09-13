@@ -64,8 +64,8 @@ python3 src/problem_a_pipeline_cc_v01.py --stage all --profile final
 
 当前正式文件：
 
-- 论文：`paper/problem_a/problem_a_paper_cc_v03.pdf`
-- 论文源码：`paper/problem_a/problem_a_paper_cc_v03.tex`
+- 论文：`paper/problem_a/problem_a_paper_cc_v05.pdf`
+- 论文源码：`paper/problem_a/problem_a_paper_cc_v05.tex`
 - AI 使用详情：`paper/problem_a/problem_a_ai_usage_cc_v01.pdf`
 - 提交工作簿：`outputs/submissions/problem_a/result1.xlsx` 至 `result4.xlsx`
 - 本轮决策与审计：`docs/20260912_1435_problem_a_epic_revision_cc.md`
