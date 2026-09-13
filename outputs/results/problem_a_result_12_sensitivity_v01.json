@@ -1,0 +1,105 @@
+{
+  "purpose": "One-at-a-time robustness analysis on a 320-interval grid. Percent changes are normalized to the same-grid baseline and are not official outputs.",
+  "grid_intervals": 320,
+  "cases": [
+    {
+      "case": "baseline",
+      "h_factor": 1.0,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 57.56443547161673,
+      "q4_drying_time_h": 50.85579299685399,
+      "q3_change_percent": 0.0,
+      "q4_change_percent": 0.0
+    },
+    {
+      "case": "h_minus_20pct",
+      "h_factor": 0.8,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 57.58423806441781,
+      "q4_drying_time_h": 50.874044563901386,
+      "q3_change_percent": 0.034400741775435166,
+      "q4_change_percent": 0.035888865302960364
+    },
+    {
+      "case": "h_plus_20pct",
+      "h_factor": 1.2,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 57.551341140951045,
+      "q4_drying_time_h": 50.84383678624463,
+      "q3_change_percent": -0.022747258022088747,
+      "q4_change_percent": -0.02351002689133586
+    },
+    {
+      "case": "hm_minus_20pct",
+      "h_factor": 1.0,
+      "hm_factor": 0.8,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 59.09950879854446,
+      "q4_drying_time_h": 51.53377945718633,
+      "q3_change_percent": 2.6667043884841495,
+      "q4_change_percent": 1.3331548293313917
+    },
+    {
+      "case": "hm_plus_20pct",
+      "h_factor": 1.0,
+      "hm_factor": 1.2,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 56.733014452844024,
+      "q4_drying_time_h": 50.47187189012814,
+      "q3_change_percent": -1.4443310560782914,
+      "q4_change_percent": -0.7549210898148815
+    },
+    {
+      "case": "terminal_temperature_minus_2c",
+      "h_factor": 1.0,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 48.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 61.467569706084255,
+      "q4_drying_time_h": 54.18638303525739,
+      "q3_change_percent": 6.780461238766146,
+      "q4_change_percent": 6.549086824011249
+    },
+    {
+      "case": "terminal_temperature_plus_2c",
+      "h_factor": 1.0,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 52.165,
+      "terminal_air_moisture_kg_per_kg": 0.04986,
+      "q3_drying_time_h": 54.01023681957863,
+      "q4_drying_time_h": 47.80681351100774,
+      "q3_change_percent": -6.174296026564128,
+      "q4_change_percent": -5.995343511868681
+    },
+    {
+      "case": "terminal_moisture_minus_20pct",
+      "h_factor": 1.0,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.03988800000000001,
+      "q3_drying_time_h": 167.24366199589173,
+      "q4_drying_time_h": 50.82716171858905,
+      "q3_change_percent": 190.5329664500132,
+      "q4_change_percent": -0.05629895156036621
+    },
+    {
+      "case": "terminal_moisture_plus_20pct",
+      "h_factor": 1.0,
+      "hm_factor": 1.0,
+      "terminal_air_temperature_c": 50.165,
+      "terminal_air_moisture_kg_per_kg": 0.059831999999999996,
+      "q3_drying_time_h": 57.468794498686684,
+      "q4_drying_time_h": 51.12161562458365,
+      "q3_change_percent": -0.16614594088602946,
+      "q4_change_percent": 0.5226988157398295
+    }
+  ]
+}

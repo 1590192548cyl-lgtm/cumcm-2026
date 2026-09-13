@@ -1,0 +1,54 @@
+{
+  "model": "one-dimensional radial cylindrical heat and moisture transfer",
+  "numerical_method": "node-centred conservative finite volume + SciPy BDF",
+  "input": "data/raw/problem_a_raw_attachment_1_v01.xlsx",
+  "time_step_output_s": 1,
+  "target_radius_step_cm": 0.1,
+  "internal_radial_intervals": 2560,
+  "internal_dr_cm": 0.00078125,
+  "solver_rtol": 1e-08,
+  "heat_biot_number": 1.3888888888888888,
+  "initial_moisture_diffusivity_m2_per_s": 4.937655094173937e-09,
+  "initial_mass_biot_number": 3.2404045432170427,
+  "convergence": [
+    {
+      "coarse_intervals": 640,
+      "fine_intervals": 1280,
+      "max_abs_temperature_c": 2.0858617091334963e-05,
+      "max_abs_moisture_kg_per_kg": 0.00029956756544180507,
+      "key_time_max_abs_temperature_c": 2.0858617091334963e-05,
+      "key_time_max_abs_moisture_kg_per_kg": 2.1817373882182522e-05
+    },
+    {
+      "coarse_intervals": 1280,
+      "fine_intervals": 2560,
+      "max_abs_temperature_c": 2.2809653351885117e-05,
+      "max_abs_moisture_kg_per_kg": 7.343194944775533e-05,
+      "key_time_max_abs_temperature_c": 6.954230304501152e-06,
+      "key_time_max_abs_moisture_kg_per_kg": 5.4295360403244786e-06
+    }
+  ],
+  "balance": {
+    "temperature_average_change_c": 7.167912979210932,
+    "temperature_boundary_integral_c": 7.1679136333459645,
+    "temperature_balance_abs_error_c": 6.541350323630013e-07,
+    "moisture_average_change_kg_per_kg": -0.2564428867387263,
+    "moisture_boundary_integral_kg_per_kg": -0.2564434204730887,
+    "moisture_balance_abs_error_kg_per_kg": 5.337343624289836e-07
+  },
+  "physical_checks": {
+    "temperature_min_c": 28.0,
+    "temperature_max_c": 36.78555998939579,
+    "moisture_min_kg_per_kg": 1.5102346834821176,
+    "moisture_max_kg_per_kg": 2.5500000000000007,
+    "surface_temperature_ge_centre_at_1800s": true,
+    "surface_moisture_le_centre_at_1800s": true
+  },
+  "software": {
+    "python": "3.14.3",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9"
+  }
+}

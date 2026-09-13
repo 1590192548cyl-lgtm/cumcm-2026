@@ -1,0 +1,7 @@
+interface:
+  display_name: "CUMCM A题论文工作流"
+  short_description: "基于11篇获奖论文的A题建模、写作、图表、排版与审查工作流"
+  default_prompt: "使用 $cumcm-a-paper 将当前 A 题模型与结果整理为可审计的竞赛论文。"
+
+policy:
+  allow_implicit_invocation: true

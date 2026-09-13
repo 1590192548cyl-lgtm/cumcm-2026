@@ -47,6 +47,11 @@ slprj/
 *.temp
 ~$*
 
+# Reproducible local build and smoke-test artifacts
+outputs/smoke/
+paper/**/build*/
+*.inspect.ndjson
+
 # Generated submission archives
 outputs/submissions/*.zip
 outputs/submissions/*.7z
@@ -54,4 +59,3 @@ outputs/submissions/*.7z
 # Large local-only data (uncomment if needed)
 # data/raw/*
 # !data/raw/.gitkeep
-

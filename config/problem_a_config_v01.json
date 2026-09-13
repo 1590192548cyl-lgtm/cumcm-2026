@@ -1,0 +1,34 @@
+{
+  "random_seed": 20260910,
+  "paths": {
+    "air_conditions": "data/raw/problem_a_raw_attachment_1_v01.xlsx",
+    "radius_history": "data/raw/problem_a_raw_attachment_2_v01.xlsx",
+    "official_output_root": "outputs",
+    "quick_output_root": "outputs/smoke/problem_a",
+    "workflow_report": "outputs/results/problem_a_result_10_workflow_validation_v01.json"
+  },
+  "profiles": {
+    "quick": {
+      "q1_intervals": 80,
+      "q2_intervals": 160,
+      "drying_intervals": 160
+    },
+    "final": {
+      "q1_intervals": 2560,
+      "q2_intervals": 1280,
+      "drying_intervals": 2560
+    }
+  },
+  "model_contract": {
+    "initial_temperature_c": 28.0,
+    "initial_moisture_kg_per_kg": 2.55,
+    "initial_radius_m": 0.02,
+    "length_m": 0.25,
+    "heat_transfer_coefficient_w_per_m2_k": 25.0,
+    "mass_transfer_coefficient_m_per_s": 8e-7,
+    "drying_threshold_kg_per_kg": 0.15,
+    "four_decimal_display_threshold_kg_per_kg": 0.14995,
+    "air_extension_after_s": 14400,
+    "air_extension_method": "constant_final_observation"
+  }
+}

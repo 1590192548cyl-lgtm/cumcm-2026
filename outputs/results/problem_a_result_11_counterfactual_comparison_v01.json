@@ -1,0 +1,39 @@
+{
+  "purpose": "Separate the radius-path effect from the material-correlation effect; these 640-interval cases are robustness evidence rather than official outputs.",
+  "grid_intervals": 640,
+  "threshold_kg_per_kg": 0.15,
+  "cases": [
+    {
+      "case": "appendix3_fixed",
+      "material": "appendix_3_fixed_radius",
+      "radius_path": "fixed 2 cm",
+      "drying_time_s": 205772.00595060296,
+      "drying_time_h": 57.158890541834154
+    },
+    {
+      "case": "appendix3_shrinking",
+      "material": "appendix_3_fixed_radius",
+      "radius_path": "measured shrinkage",
+      "drying_time_s": 90483.65128532171,
+      "drying_time_h": 25.13434757925603
+    },
+    {
+      "case": "appendix4_fixed",
+      "material": "appendix_4_shrinking_radius",
+      "radius_path": "fixed 2 cm",
+      "drying_time_s": 464709.2106251615,
+      "drying_time_h": 129.08589184032263
+    },
+    {
+      "case": "appendix4_shrinking",
+      "material": "appendix_4_shrinking_radius",
+      "radius_path": "measured shrinkage",
+      "drying_time_s": 182962.42925304617,
+      "drying_time_h": 50.82289701473505
+    }
+  ],
+  "within_material_shrinkage_reduction_percent": {
+    "appendix3": 56.027229813251196,
+    "appendix4": 60.628619990787044
+  }
+}
