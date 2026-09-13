@@ -28,18 +28,6 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcommand{\unit}[1]{\,\mathrm{#1}}
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
-\definecolor{resultblue}{HTML}{1F4E79}
-\definecolor{resultfill}{HTML}{F3F7FB}
-\newcommand{\resultbox}[2]{%
-  \par\medskip\noindent
-  \begingroup
-  \setlength{\fboxsep}{7pt}%
-  \fcolorbox{resultblue}{resultfill}{%
-    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
-      \textcolor{resultblue}{\heiti #1}\par\smallskip
-      \normalfont #2}}
-  \endgroup
-  \par\medskip}
 
 \begin{document}
 
@@ -361,7 +349,7 @@ C_{\max}^{(N)}(t)+\varepsilon_C<0.14995,
 \end{tabular}
 \end{table}
 
-\resultbox{问题 1 核心结论}{预热 $1800\unit{s}$ 后，中心与表面温度分别为 $33.5753\,^{\circ}\mathrm{C}$ 和 $36.7856\,^{\circ}\mathrm{C}$，中心与表面水分浓度分别为 $2.5500\unit{kg/kg}$ 和 $1.5102\unit{kg/kg}$。升温已传至内部，而失水仍集中于外层，传热快于传质。}
+综合上述结果，预热 $1800\unit{s}$ 后，中心与表面温度分别为 $33.5753\,^{\circ}\mathrm{C}$ 和 $36.7856\,^{\circ}\mathrm{C}$，中心与表面水分浓度分别为 $2.5500\unit{kg/kg}$ 和 $1.5102\unit{kg/kg}$。升温已传至内部，而失水仍集中于外层，表明该阶段传热快于传质。
 
 \section{问题 2：变物性完整烘干模型}
 
@@ -412,7 +400,7 @@ C_{\max}^{(N)}(t)+\varepsilon_C<0.14995,
 \end{tabular}
 \end{table}
 
-\resultbox{问题 2 核心结论}{$3\unit{h}$ 时，中心与表面温度之差仅为 $0.1169\,^{\circ}\mathrm{C}$，而中心与表面水分浓度之差仍为 $0.7581\unit{kg/kg}$。温度场已接近平衡，水分场仍有显著径向梯度，后续干燥主要受内部扩散控制。}
+由表\ref{tab:q2temperature}和表\ref{tab:q2moisture}可知，$3\unit{h}$ 时中心与表面温度之差仅为 $0.1169\,^{\circ}\mathrm{C}$，而中心与表面水分浓度之差仍为 $0.7581\unit{kg/kg}$。因此，温度场已接近平衡，水分场仍有显著径向梯度，后续干燥主要受内部扩散控制。
 
 \section{问题 3：固定半径下的达标时间}
 
@@ -445,7 +433,7 @@ t_{\mathrm{dry},3}\approx57.2\unit{h}\approx2.38\unit{d}.
 \end{tabular}
 \end{table}
 
-\resultbox{问题 3 核心结论}{固定半径且采用附录 3 物性时，理论达标时间为约 $57.2\unit{h}$（$2.38\unit{d}$）。结果文件取 $57.2500\unit{h}$ 作为安全结束时刻，此时 $C_{\max}+\varepsilon_C=0.1499443\unit{kg/kg}<0.14995\unit{kg/kg}$，四位小数显示下仍满足全域达标要求。}
+综上，固定半径且采用附录 3 物性时，理论达标时间为约 $57.2\unit{h}$（$2.38\unit{d}$）。结果文件取 $57.2500\unit{h}$ 作为安全结束时刻，此时 $C_{\max}+\varepsilon_C=0.1499443\unit{kg/kg}<0.14995\unit{kg/kg}$，故在四位小数显示下仍满足全域达标要求。
 
 \section{问题 4：考虑半径收缩的烘干时间}
 
@@ -490,7 +478,7 @@ t_{\mathrm{dry},4}\approx50.9\unit{h}\approx2.12\unit{d},
 
 表\ref{tab:q4}中的“--”表示 $1.5\unit{cm}$ 已位于收缩后药材表面之外，因此该物理位置不再定义药材内部水分浓度。结果文件仍保留题目模板的固定距离列，同时增设“药材表面”列；超出瞬时半径的单元格保持空白。
 
-\resultbox{问题 4 核心结论}{采用附录 4 物性与实测收缩路径时，理论达标时间为约 $50.9\unit{h}$（$2.12\unit{d}$），结束半径约为 $1.200\unit{cm}$。结果文件取 $50.8833\unit{h}$ 作为安全结束时刻，满足 $C_{\max}+\varepsilon_C=0.1499204\unit{kg/kg}<0.14995\unit{kg/kg}$。}
+因此，采用附录 4 物性与实测收缩路径时，理论达标时间为约 $50.9\unit{h}$（$2.12\unit{d}$），结束半径约为 $1.200\unit{cm}$。结果文件取 $50.8833\unit{h}$ 作为安全结束时刻，并满足 $C_{\max}+\varepsilon_C=0.1499204\unit{kg/kg}<0.14995\unit{kg/kg}$。
 
 \section{模型检验、反事实与灵敏度分析}
 
